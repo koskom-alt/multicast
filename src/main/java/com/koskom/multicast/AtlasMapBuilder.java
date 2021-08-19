@@ -18,11 +18,9 @@ public class AtlasMapBuilder extends RouteBuilder {
                 .templateParameter("topic.in")
                 .templateParameter("direct.out")
                 .from("direct:{{topic.in}}")
-                    /*//перебираем исходящие директы,
+                    /*перебираем исходящие директы,
                     в случае если нам необходимо будет отправлять сообщение в несколько топиков*/
-                    .setHeader("outs", simple("{{direct.out}}"))
-                    .log(LoggingLevel.INFO, "${routeId} start ${body}\n${headers}")
-                    .recipientList(simple("${header.outs}"), ",")
+                    .recipientList(simple("{{direct.out}}"), ",")
         ;
 
         //Шаблон для каждого топика, в который будем отправлять ответ
