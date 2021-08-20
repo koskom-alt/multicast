@@ -6,6 +6,7 @@ import org.apache.camel.builder.RouteBuilder;
 public class AtlasMapBuilder extends RouteBuilder {
 
     public void configure() throws Exception {
+        //это для тестов, в сервисе не нужен
         rest("api").get().route()
                 .routeId(getContext().getName() + ".REQ")
                 .startupOrder(11)
@@ -35,3 +36,5 @@ public class AtlasMapBuilder extends RouteBuilder {
         ;
     }
 }
+//Настройка шаблонов, установка параметров в конфиге
+//Дока по routeTemplate https://camel.apache.org/manual/latest/route-template.html
